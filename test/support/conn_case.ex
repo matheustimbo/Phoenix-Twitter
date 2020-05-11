@@ -1,4 +1,4 @@
-defmodule TwitterWeb.ConnCase do
+defmodule ChirpWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule TwitterWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use TwitterWeb.ConnCase, async: true`, although
+  by setting `use ChirpWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -20,19 +20,22 @@ defmodule TwitterWeb.ConnCase do
   using do
     quote do
       # Import conveniences for testing with connections
-      use Phoenix.ConnTest
-      alias TwitterWeb.Router.Helpers, as: Routes
+      import Plug.Conn
+      import Phoenix.ConnTest
+      import ChirpWeb.ConnCase
+
+      alias ChirpWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint TwitterWeb.Endpoint
+      @endpoint ChirpWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Twitter.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Chirp.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Twitter.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Chirp.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

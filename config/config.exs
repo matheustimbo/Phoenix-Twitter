@@ -7,16 +7,16 @@
 # General application configuration
 use Mix.Config
 
-config :twitter,
-  ecto_repos: [Twitter.Repo]
+config :chirp,
+  ecto_repos: [Chirp.Repo]
 
 # Configures the endpoint
-config :twitter, TwitterWeb.Endpoint,
+config :chirp, ChirpWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "dYpO6wz48Me4d70CNtDIeRFDSzTR3dABPesO85NCEKfUoXAINsJcGKz0t9WLhx9Q",
-  render_errors: [view: TwitterWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Twitter.PubSub, adapter: Phoenix.PubSub.PG2],
-  live_view: [signing_salt: "8TO/acc0"]
+  secret_key_base: "w+RzwgNs3HvfIoW/KENWV5Wpx2zKl0B0EGNTQC5frkFfb8jIPXhJhFFtX9Q757jA",
+  render_errors: [view: ChirpWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Chirp.PubSub,
+  live_view: [signing_salt: "Zq+2o+NP"]
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -1,4 +1,4 @@
-defmodule TwitterWeb.ChannelCase do
+defmodule ChirpWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -11,7 +11,7 @@ defmodule TwitterWeb.ChannelCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use TwitterWeb.ChannelCase, async: true`, although
+  by setting `use ChirpWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -20,18 +20,19 @@ defmodule TwitterWeb.ChannelCase do
   using do
     quote do
       # Import conveniences for testing with channels
-      use Phoenix.ChannelTest
+      import Phoenix.ChannelTest
+      import ChirpWeb.ChannelCase
 
       # The default endpoint for testing
-      @endpoint TwitterWeb.Endpoint
+      @endpoint ChirpWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Twitter.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Chirp.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Twitter.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Chirp.Repo, {:shared, self()})
     end
 
     :ok

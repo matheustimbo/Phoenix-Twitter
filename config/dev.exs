@@ -1,10 +1,10 @@
 use Mix.Config
 
 # Configure your database
-config :twitter, Twitter.Repo,
+config :chirp, Chirp.Repo,
   username: "postgres",
-  password: "12345678",
-  database: "twitter_dev",
+  password: "postgres",
+  database: "chirp_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,7 +15,7 @@ config :twitter, Twitter.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :twitter, TwitterWeb.Endpoint,
+config :chirp, ChirpWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -55,13 +55,13 @@ config :twitter, TwitterWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :twitter, TwitterWeb.Endpoint,
+config :chirp, ChirpWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/twitter_web/(live|views)/.*(ex)$",
-      ~r"lib/twitter_web/templates/.*(eex)$"
+      ~r"lib/chirp_web/(live|views)/.*(ex)$",
+      ~r"lib/chirp_web/templates/.*(eex)$"
     ]
   ]
 
