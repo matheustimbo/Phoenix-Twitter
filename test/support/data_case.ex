@@ -1,4 +1,4 @@
-defmodule Chirp.DataCase do
+defmodule TrabalhoTwitter.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule Chirp.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use Chirp.DataCase, async: true`, although
+  by setting `use TrabalhoTwitter.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -18,20 +18,20 @@ defmodule Chirp.DataCase do
 
   using do
     quote do
-      alias Chirp.Repo
+      alias TrabalhoTwitter.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Chirp.DataCase
+      import TrabalhoTwitter.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Chirp.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(TrabalhoTwitter.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Chirp.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(TrabalhoTwitter.Repo, {:shared, self()})
     end
 
     :ok

@@ -1,4 +1,4 @@
-# Chirp
+# TrabalhoTwitter
 
 To start your Phoenix server:
 

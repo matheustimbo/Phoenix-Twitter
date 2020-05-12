@@ -1,9 +1,9 @@
-defmodule Chirp.MixProject do
+defmodule TrabalhoTwitter.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :chirp,
+      app: :trabalhoTwitter,
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule Chirp.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Chirp.Application, []},
+      mod: {TrabalhoTwitter.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
